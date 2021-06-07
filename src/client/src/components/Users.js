@@ -1,39 +1,42 @@
 import React, { useState, useEffect } from "react";
 
 const Users = () => {
-  const [users, setUsers] = useState({});
+  const [users, setUsers] = useState([]);
 
-  // useEffect(() => {
-  //   const getUsers = async () => {
-  //     await fetch("http://localhost:3000/users")
-  //       .then((res) => res.json)
-  //       .then((user) => setUsers({ user }));
-  //     console.log(users);
-  //   };
+  useEffect(() => {
+    const getUsers = () => {
+      const url = "http://localhost:3000/users/";
+      fetch(url)
+        .then((res) => res.json())
+        .then((data) => setUsers(data));
+    };
 
-  //   getUsers();
-  // }, []);
-  const getUsers = () => {
-    const url = "http://localhost:3000/users/";
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => console.log(data));
-  };
+    getUsers();
+  }, []);
+  // const getUsers = () => {
+  //   const url = "http://localhost:3000/users/";
+  //   fetch(url)
+  //     .then((res) => res.json())
+  //     .then((data) => console.log(data));
+  // };
 
-  const getUsersByAge = () => {
-    const url = "http://localhost:3000/users/age/carrot";
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => console.log(data));
-  };
+  // const getUsersByAge = () => {
+  //   const url = "http://localhost:3000/users/age/carrot";
+  //   fetch(url)
+  //     .then((res) => res.json())
+  //     .then((data) => console.log(data));
+  // };
 
-  getUsers();
-  getUsersByAge();
-
+  // getUsers();
+  // getUsersByAge();
+  console.log(users);
   return (
     <div>
       <h1>All Users</h1>
-      <h3>Users and their age</h3>
+      <p>Users and their age</p>
+      {users.map((user) => (
+        <p>{user.username}</p>
+      ))}
     </div>
   );
 };
