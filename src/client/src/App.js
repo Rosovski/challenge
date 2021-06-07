@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./App.css";
-import Users from "./components/Users";
-import Button from "./components/Button";
-import UsersAge from "./components/UsersAge";
+import Users from "./components/users/Users";
+import Button from "./components/button/Button";
+import UsersAge from "./components/usersAge/UsersAge";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -12,8 +12,9 @@ const App = () => {
   return (
     <div className="App">
       <Users />
+      <h2>Age Demographic of Users With ___</h2>
       <Button onChange={setItem} />
-      <UsersAge />
+      <UsersAge item={item} />
     </div>
   );
 };

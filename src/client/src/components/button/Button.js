@@ -1,9 +1,10 @@
 import React from "react";
 import { DropdownButton, Dropdown } from "react-bootstrap";
+import "./button.css";
 
 const Button = ({ onChange }) => {
   return (
-    <div>
+    <div class="button">
       <DropdownButton id="dropdown-item-button" title="Item">
         <Dropdown.Item as="button" onSelect={() => onChange("carrot")}>
           carrot

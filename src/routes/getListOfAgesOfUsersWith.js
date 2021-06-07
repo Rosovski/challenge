@@ -11,10 +11,14 @@ const mockDBCalls = require("../database/index.js");
 //     app.get('/users/age', getListOfAgesOfUsersWithHandler);
 // };
 
-const getListOfAgesOfUsersWithHandler = async (request, response) => {
-  const itemToLookup = request.params.item;
-  const data = await mockDBCalls.getListOfAgesOfUsersWith(itemToLookup);
-  return response.status(200).send(JSON.stringify(data));
+const getListOfAgesOfUsersWithHandler = async (request, response, next) => {
+  try {
+    const itemToLookup = request.params.item;
+    const data = await mockDBCalls.getListOfAgesOfUsersWith(itemToLookup);
+    return response.status(200).send(JSON.stringify(data));
+  } catch (err) {
+    return next(new Error("Couldn't get the user age demographic object"));
+  }
 };
 
 module.exports = (app) => {

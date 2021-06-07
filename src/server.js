@@ -10,9 +10,8 @@ const port = process.env.PORT || 3000;
 registerRoutes(app);
 
 // serve static files
-// app.use(express.static("./client/dist"));
 const path = require("path");
-//app.use(express.static(path.join(__dirname, "./client/dist")));
+// app.use(express.static(path.join(__dirname, "./client/dist")));
 app.use(express.static(path.join(__dirname, "../public")));
 
 // create server start method
